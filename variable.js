@@ -2,8 +2,8 @@ console.log("a");
 let a=67;
 console.log(a);
 a='harry';
-console.log(a);// a can have integer and string value in js
-
+console.log(a);// a can have integer  string value in js
+l
 //rules in nameing variable in js 
 
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Guessing Game</title>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <input type="number" id="guess" min="1" max="100">
+    <button id="btn" onclick="checkGuess()">Submit Guess</button>
+    <p id="message"></p>
+    <p>Attempts: <span id="attempts">0</span></p>
+
+    <script>
+        // Generate a random number between 1 and 100
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('guess').value);
+
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                alert("Please enter a valid number between 1 and 100.");
+                return;
+            }
+
+            attempts++;
+
+            if (userGuess === randomNumber) {
+                document.getElementById('message').textContent = `Congratulations! You guessed the correct number ${randomNumber} in ${attempts} attempts.`;
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('guess').setAttribute('disabled', true);
+                document.getElementById('btn').setAttribute('disabled', true);
+            } else if (userGuess < randomNumber) {
+                document.getElementById('message').textContent = 'Try a higher number.';
+                document.getElementById('message').style.color = 'red';
+            } else {
+                document.getElementById('message').textContent = 'Try a lower number.';
+                document.getElementById('message').style.color = 'red';
+            }
+
+            document.getElementById('attempts').textContent = attempts;
+        }
+    </script>
+</body>
+</html>
